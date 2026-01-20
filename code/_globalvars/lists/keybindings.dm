@@ -1,6 +1,7 @@
 /// Creates and sorts all the keybinding datums
 /proc/init_keybindings()
-	for(var/datum/keybinding/keybinding as anything in subtypesof(/datum/keybinding))
+	for(var/KB in subtypesof(/datum/keybinding))
+		var/datum/keybinding/keybinding = KB
 		if(!initial(keybinding.hotkey_keys))
 			continue
 		add_keybinding(new keybinding)
@@ -21,7 +22,8 @@
 			LAZYOR(GLOB.hotkey_keybinding_list_by_key[bound_key], list(instance.name))
 
 /proc/init_emote_keybinds()
-	for(var/datum/emote/faketype in subtypesof(/datum/emote))
+	for(var/i in subtypesof(/datum/emote))
+		var/datum/emote/faketype = i
 		if(!initial(faketype.key))
 			continue
 		var/datum/keybinding/emote/emote_kb = new

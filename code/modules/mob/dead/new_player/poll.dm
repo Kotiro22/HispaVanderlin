@@ -5,7 +5,8 @@
 /mob/dead/new_player/proc/handle_player_polling()
 	var/list/output = list("<div align='center'><B>Player polls</B><hr><table>")
 	var/rs = REF(src)
-	for(var/datum/poll_question/poll as anything in GLOB.polls)
+	for(var/p in GLOB.polls)
+		var/datum/poll_question/poll = p
 		if((poll.admin_only && !client.holder) || poll.future_poll)
 			continue
 		output += "<tr bgcolor='#e2e2e2'><td><a href='byond://?src=[rs];viewpoll=[REF(poll)]'><b>[poll.question]</b></a></td></tr>"
@@ -61,7 +62,8 @@
 		<input type='hidden' name='votepollref' value='[REF(poll)]'>
 		"}
 	output += "<table><tr><td>"
-	for(var/datum/poll_option/option as anything in poll.options)
+	for(var/o in poll.options)
+		var/datum/poll_option/option = o
 		output += "<label><input type='radio' name='voteoptionref' value='[REF(option)]'"
 		if(voted_option_id && !poll.allow_revoting)
 			output += " disabled"
@@ -140,7 +142,8 @@
 		<input type='hidden' name='src' value='[REF(src)]'>
 		<input type='hidden' name='votepollref' value='[REF(poll)]'>
 		"}
-	for(var/datum/poll_option/option as anything in poll.options)
+	for(var/o in poll.options)
+		var/datum/poll_option/option = o
 		var/mid_val = round((option.max_val + option.min_val) / 2)
 		var/selected_rating = text2num(voted_ratings["[option.option_id]"])
 		output += "<label><br>[option.text]: <select name='[REF(option)]'"
@@ -195,7 +198,8 @@
 		<input type='hidden' name='votepollref' value='[REF(poll)]'>
 		"}
 	output += "<table><tr><td>"
-	for(var/datum/poll_option/option as anything in poll.options)
+	for(var/o in poll.options)
+		var/datum/poll_option/option = o
 		output += "<label><input type='checkbox' name='[REF(option)]' value='[option.option_id]'"
 		if(length(voted_for) && !poll.allow_revoting)
 			output += " disabled"

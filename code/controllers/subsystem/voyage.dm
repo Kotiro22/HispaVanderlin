@@ -510,13 +510,14 @@ SUBSYSTEM_DEF(terrain_generation)
 	// Get edge turfs based on direction
 	var/list/edge_turfs = get_edge_turfs(island.bottom_left, island.island_size, island.z_level, direction, FALSE)
 
-	if(!length(edge_turfs))
+	if(!edge_turfs.len)
 		return null
 
 	// Cast lines from edge turfs to find sand/shore tiles
 	var/opposite_dir = turn(direction, 180) // Direction toward island interior
 
-	for(var/turf/current as anything in edge_turfs)
+	for(var/turf/edge_turf in edge_turfs)
+		var/turf/current = edge_turf
 		var/distance = 0
 
 		for(var/i = 1 to 30)
@@ -530,7 +531,7 @@ SUBSYSTEM_DEF(terrain_generation)
 					return current
 				break
 
-	return edge_turfs[round(length(edge_turfs) / 2)]
+	return edge_turfs[round(edge_turfs.len / 2)]
 
 /datum/controller/subsystem/terrain_generation/proc/dock_ship_to_island(datum/ship_data/ship, datum/island_data/island, mirage_range = world.view)
 	if(!ship || !island)

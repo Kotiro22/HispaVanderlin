@@ -628,18 +628,19 @@
 	if (iscarbon(M))
 		var/mob/living/carbon/C = M
 		if(C.reagents)
-			C.clear_reagents_to_vomit_pool(V)
+			clear_reagents_to_vomit_pool(C,V)
 
-/mob/living/carbon/proc/clear_reagents_to_vomit_pool(obj/effect/decal/cleanable/vomit/V, purge = FALSE)
-	var/obj/item/organ/stomach/belly = getorganslot(ORGAN_SLOT_STOMACH)
+/proc/clear_reagents_to_vomit_pool(mob/living/carbon/M, obj/effect/decal/cleanable/vomit/V, purge = FALSE)
+	var/obj/item/organ/stomach/belly = M.getorganslot(ORGAN_SLOT_STOMACH)
 	if(!belly)
 		return
 	var/chemicals_lost = belly.reagents.total_volume * 0.1
 	if(purge)
 		chemicals_lost = belly.reagents.total_volume * 0.67 //For detoxification surgery, we're manually pumping the stomach out of chemcials, so it's far more efficient.
-	belly.reagents.trans_to(V, chemicals_lost, transfered_by = src)
+	belly.reagents.trans_to(V, chemicals_lost, transfered_by = M)
 	//clear the stomach of anything even not food
-	for(var/datum/reagent/reagent as anything in belly.reagents.reagent_list)
+	for(var/bile in belly.reagents.reagent_list)
+		var/datum/reagent/reagent = bile
 		belly.reagents.remove_reagent(reagent.type, min(reagent.volume, 10))
 
 //Whatever happens after high temperature fire dies out or thermite reaction works.

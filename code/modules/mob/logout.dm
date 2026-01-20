@@ -12,7 +12,8 @@
 		loc.on_log(FALSE)
 
 	if(client)
-		for(var/datum/callback/CB as anything in client.player_details.post_logout_callbacks)
+		for(var/foo in client.player_details.post_logout_callbacks)
+			var/datum/callback/CB = foo
 			CB.Invoke()
 
 	clear_important_client_contents(client)

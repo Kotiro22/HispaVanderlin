@@ -64,7 +64,8 @@ GLOBAL_LIST_INIT(dangerous_turfs, typecacheof(list(
 		update_mob_config_movespeeds()
 
 /proc/update_mob_config_movespeeds()
-	for(var/mob/M as anything in GLOB.mob_list)
+	for(var/i in GLOB.mob_list)
+		var/mob/M = i
 		M.update_config_movespeed()
 
 /proc/init_emote_list()

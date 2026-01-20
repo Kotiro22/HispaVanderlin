@@ -3,7 +3,8 @@
 /proc/TopicHandlers()
 	. = list()
 	var/list/all_handlers = subtypesof(/datum/world_topic)
-	for(var/datum/world_topic/WT as anything in all_handlers)
+	for(var/I in all_handlers)
+		var/datum/world_topic/WT = I
 		var/keyword = initial(WT.keyword)
 		if(!keyword)
 			warning("[WT] has no keyword! Ignoring...")

@@ -62,7 +62,8 @@
 			for(var/turf/T in turflist)
 				if(accessible[T])
 					continue
-				for(var/turf/NT as anything in T.GetAtmosAdjacentTurfs(alldir = TRUE))
+				for(var/thing in T.GetAtmosAdjacentTurfs(alldir = TRUE))
+					var/turf/NT = thing
 					if(!(NT in accessible))
 						continue
 					if(!(get_dir(T,NT) in GLOB.cardinals))

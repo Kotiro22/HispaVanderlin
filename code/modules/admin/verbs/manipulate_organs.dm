@@ -22,7 +22,8 @@
 			message_admins("[key_name_admin(usr)] has added organ [organ.type] to [ADMIN_LOOKUPFLW(C)]")
 
 		if("drop organ", "remove organ")
-			for(var/obj/item/organ/I as anything in C.internal_organs)
+			for(var/X in C.internal_organs)
+				var/obj/item/organ/I = X
 				organs["[I.name] ([I.type])"] = I
 
 			var/obj/item/organ = input("Select organ/implant:", "Organ Manipulation", null) as null|anything in organs

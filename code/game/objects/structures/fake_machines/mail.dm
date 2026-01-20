@@ -829,12 +829,14 @@ GLOBAL_LIST_EMPTY(letters_sent)
 		contents += "<center><a href='?src=[REF(src)];changecat=1'>\[RETURN\]</a><BR><BR></center>"
 		contents += "<center>"
 		var/list/items = list()
-		for(var/datum/inqports/PA as anything in GLOB.inqsupplies)
+		for(var/pack in GLOB.inqsupplies)
+			var/datum/inqports/PA = pack
 			if(all_category[PA.category] == cat_current && PA.name)
-				items += GLOB.inqsupplies[PA]
+				items += GLOB.inqsupplies[pack]
 				if(PA.name == "Seizing Garrote" && !HAS_TRAIT(user, TRAIT_BLACKBAGGER))
-					items -= GLOB.inqsupplies[PA]
-		for(var/datum/inqports/PA as anything in sortNames(items, order=0))
+					items -= GLOB.inqsupplies[pack]
+		for(var/pack in sortNames(items, order=0))
+			var/datum/inqports/PA = pack
 			var/name = uppertext(PA.name)
 			if(inqonly && !HAS_TRAIT(user, TRAIT_PURITAN) || (PA.maximum && !PA.remaining) || inqcoins < PA.marquescost)
 				contents += "[name]<BR>"

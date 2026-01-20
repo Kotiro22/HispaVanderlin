@@ -8,7 +8,8 @@
 /datum/mapGeneratorModule/bottomLayer/massdelete/generate()
 	if(!mother)
 		return
-	for(var/turf/T as anything in mother.map)
+	for(var/V in mother.map)
+		var/turf/T = V
 		T.empty(deleteturfs? null : T.type, null, ignore_typecache, CHANGETURF_FORCEOP)
 
 /datum/mapGeneratorModule/bottomLayer/massdelete/no_delete_mobs/New()

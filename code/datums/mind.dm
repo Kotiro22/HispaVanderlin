@@ -385,7 +385,8 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 
 /// removes all antag datums from a mind
 /datum/mind/proc/remove_all_antag_datums() //For the Lazy amongst us.
-	for(var/datum/antagonist/antag_datum_ref as anything in antag_datums)
+	for(var/a in antag_datums)
+		var/datum/antagonist/antag_datum_ref = a
 		antag_datum_ref.on_removal()
 
 /**
@@ -397,7 +398,8 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 /datum/mind/proc/has_antag_datum(datum_type, check_subtypes = TRUE)
 	if(!datum_type)
 		CRASH("has_antag_datum was called without an antag datum specified!")
-	for(var/datum/antagonist/antag_datum_ref as anything in antag_datums)
+	for(var/a in antag_datums)
+		var/datum/antagonist/antag_datum_ref = a
 		if(check_subtypes && istype(antag_datum_ref, datum_type))
 			return antag_datum_ref
 		else

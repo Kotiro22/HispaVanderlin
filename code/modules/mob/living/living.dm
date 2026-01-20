@@ -36,7 +36,8 @@
 
 	surgeries = null
 	if(LAZYLEN(status_effects))
-		for(var/datum/status_effect/S as anything in status_effects)
+		for(var/s in status_effects)
+			var/datum/status_effect/S = s
 			if(S.on_remove_on_mob_delete) //the status effect calls on_remove when its mob is deleted
 				qdel(S)
 			else
@@ -984,7 +985,8 @@
 
 /mob/living/Crossed(atom/movable/AM)
 	. = ..()
-	for(var/obj/item/item as anything in get_equipped_items())
+	for(var/i in get_equipped_items())
+		var/obj/item/item = i
 		SEND_SIGNAL(item, COMSIG_ITEM_WEARERCROSSED, AM, src)
 	if(isliving(AM))
 		var/mob/living/L = AM

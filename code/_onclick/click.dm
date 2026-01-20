@@ -23,7 +23,8 @@
 /mob/living/changeNext_move(num, hand)
 	var/mod = next_move_modifier
 	var/adj = next_move_adjust
-	for(var/datum/status_effect/S as anything in status_effects)
+	for(var/i in status_effects)
+		var/datum/status_effect/S = i
 		mod *= S.nextmove_modifier()
 		adj += S.nextmove_adjust()
 	if(!hand)

@@ -484,7 +484,8 @@
 		if(possible_reactions.len)
 			var/datum/chemical_reaction/selected_reaction = possible_reactions[1]
 			//select the reaction with the most extreme temperature requirements
-			for(var/datum/chemical_reaction/competitor as anything in possible_reactions)
+			for(var/V in possible_reactions)
+				var/datum/chemical_reaction/competitor = V
 				if(selected_reaction.is_cold_recipe) //if there are no recipe conflicts, everything in possible_reactions will have this same value for is_cold_reaction. warranty void if assumption not met.
 					if(competitor.required_temp <= selected_reaction.required_temp)
 						selected_reaction = competitor
@@ -526,14 +527,16 @@
 
 /datum/reagents/proc/isolate_reagent(reagent)
 	var/list/cached_reagents = reagent_list
-	for(var/datum/reagent/R as anything in cached_reagents)
+	for(var/_reagent in cached_reagents)
+		var/datum/reagent/R = _reagent
 		if(R.type != reagent)
 			del_reagent(R.type)
 			update_total()
 
 /datum/reagents/proc/del_reagent(reagent)
 	var/list/cached_reagents = reagent_list
-	for(var/datum/reagent/R as anything in cached_reagents)
+	for(var/_reagent in cached_reagents)
+		var/datum/reagent/R = _reagent
 		if(R.type == reagent)
 			if(my_atom && isliving(my_atom))
 				var/mob/living/M = my_atom
@@ -769,7 +772,8 @@
 
 /datum/reagents/proc/get_reagent_amount(reagent)
 	var/list/cached_reagents = reagent_list
-	for(var/datum/reagent/R as anything in cached_reagents)
+	for(var/_reagent in cached_reagents)
+		var/datum/reagent/R = _reagent
 		if (R.type == reagent)
 			return round(R.volume, CHEMICAL_QUANTISATION_LEVEL)
 

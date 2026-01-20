@@ -40,7 +40,8 @@
 
 		QDEL_NULL(brainmob)
 
-	for(var/datum/brain_trauma/BT as anything in traumas)
+	for(var/X in traumas)
+		var/datum/brain_trauma/BT = X
 		BT.owner = owner
 		BT.on_gain()
 
@@ -49,7 +50,8 @@
 
 /obj/item/organ/brain/Remove(mob/living/carbon/C, special = 0, no_id_transfer = FALSE)
 	. = ..()
-	for(var/datum/brain_trauma/BT as anything in traumas)
+	for(var/X in traumas)
+		var/datum/brain_trauma/BT = X
 		BT.on_lose(TRUE)
 		BT.owner = null
 
@@ -221,13 +223,15 @@
 ////////////////////////////////////TRAUMAS////////////////////////////////////////
 
 /obj/item/organ/brain/proc/has_trauma_type(brain_trauma_type = /datum/brain_trauma, resilience = TRAUMA_RESILIENCE_ABSOLUTE)
-	for(var/datum/brain_trauma/BT as anything in traumas)
+	for(var/X in traumas)
+		var/datum/brain_trauma/BT = X
 		if(istype(BT, brain_trauma_type) && (BT.resilience <= resilience))
 			return BT
 
 /obj/item/organ/brain/proc/get_traumas_type(brain_trauma_type = /datum/brain_trauma, resilience = TRAUMA_RESILIENCE_ABSOLUTE)
 	. = list()
-	for(var/datum/brain_trauma/BT as anything in traumas)
+	for(var/X in traumas)
+		var/datum/brain_trauma/BT = X
 		if(istype(BT, brain_trauma_type) && (BT.resilience <= resilience))
 			. += BT
 
@@ -302,7 +306,8 @@
 //Add a random trauma of a certain subtype
 /obj/item/organ/brain/proc/gain_trauma_type(brain_trauma_type = /datum/brain_trauma, resilience)
 	var/list/datum/brain_trauma/possible_traumas = list()
-	for(var/datum/brain_trauma/BT as anything in subtypesof(brain_trauma_type))
+	for(var/T in subtypesof(brain_trauma_type))
+		var/datum/brain_trauma/BT = T
 		if(can_gain_trauma(BT, resilience) && initial(BT.random_gain))
 			possible_traumas += BT
 

@@ -18,7 +18,8 @@
 			num_spawned++
 
 	//make some randomly pathing rivers
-	for(var/obj/effect/landmark/river_waypoint/W as anything in river_nodes)
+	for(var/A in river_nodes)
+		var/obj/effect/landmark/river_waypoint/W = A
 		if (W.z != target_z || W.connected)
 			continue
 		W.connected = 1
@@ -71,7 +72,8 @@
 	var/list/cardinal_turfs = list()
 	var/list/diagonal_turfs = list()
 	var/logged_turf_type
-	for(var/turf/T in orange(1, src))
+	for(var/F in RANGE_TURFS(1, src) - src)
+		var/turf/T = F
 		var/area/new_area = get_area(T)
 		if(!T || (T.density && !ismineralturf(T)) || (whitelisted_area && !istype(new_area, whitelisted_area)) || (T.flags_1 & NO_LAVA_GEN_1) )
 			continue
@@ -80,21 +82,25 @@
 			var/turf/closed/mineral/M = T
 			logged_turf_type = M.turf_type
 
-		if(get_dir(src, T) in GLOB.cardinals)
-			cardinal_turfs += T
+		if(get_dir(src, F) in GLOB.cardinals)
+			cardinal_turfs += F
 		else
-			diagonal_turfs += T
+			diagonal_turfs += F
 
-	for(var/turf/T as anything in cardinal_turfs) //cardinal turfs are always changed but don't always spread
+	for(var/F in cardinal_turfs) //cardinal turfs are always changed but don't always spread
+		var/turf/T = F
 		if(!istype(T, logged_turf_type) && T.ChangeTurf(type, baseturfs, CHANGETURF_IGNORE_AIR) && prob(probability))
 			T.Spread(probability - prob_loss, prob_loss, whitelisted_area)
 
-	for(var/turf/T as anything in diagonal_turfs) //diagonal turfs only sometimes change, but will always spread if changed
+	for(var/F in diagonal_turfs) //diagonal turfs only sometimes change, but will always spread if changed
+		var/turf/T = F
 		if(!istype(T, logged_turf_type) && prob(probability) && T.ChangeTurf(type, baseturfs, CHANGETURF_IGNORE_AIR))
 			T.Spread(probability - prob_loss, prob_loss, whitelisted_area)
 		else if(ismineralturf(T))
 			var/turf/closed/mineral/M = T
 			M.ChangeTurf(M.turf_type, M.baseturfs, CHANGETURF_IGNORE_AIR)
+
+
 
 #undef RANDOM_UPPER_X
 #undef RANDOM_UPPER_Y

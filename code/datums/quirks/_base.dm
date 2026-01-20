@@ -10,17 +10,18 @@ GLOBAL_LIST_EMPTY(quirk_points_by_type)
 		QUIRK_PECULIARITY = list()
 	)
 
-	for(var/datum/quirk/quirk_type in subtypesof(/datum/quirk))
-		if(is_abstract(quirk_type))
+	for(var/quirk_type in subtypesof(/datum/quirk))
+		var/datum/quirk/Q = quirk_type
+		if(initial(Q.abstract_type) == quirk_type)
 			continue
 
-		var/category = initial(quirk_type.quirk_category)
-		GLOB.quirk_registry[initial(quirk_type.name)] = quirk_type
+		var/category = initial(Q.quirk_category)
+		GLOB.quirk_registry[initial(Q.name)] = quirk_type
 		GLOB.quirk_points_by_type[category] += list(list(
-			"name" = initial(quirk_type.name),
+			"name" = initial(Q.name),
 			"type" = quirk_type,
-			"desc" = initial(quirk_type.desc),
-			"value" = initial(quirk_type.point_value)
+			"desc" = initial(Q.desc),
+			"value" = initial(Q.point_value)
 		))
 		LAZYADDASSOC(GLOB.quirk_singletons, quirk_type, new quirk_type)
 

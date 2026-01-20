@@ -250,7 +250,8 @@
 
 		// Wound-specific pain (can be higher intensity)
 		var/wound_pain = 0
-		for(var/datum/wound/WO as anything in BP.wounds)
+		for(var/W in BP.wounds)
+			var/datum/wound/WO = W
 			if(WO.woundpain > 0)
 				wound_pain += WO.woundpain
 
@@ -697,9 +698,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	if(!belly) //nothing to see here if we do not have a stomach
 		return fullness
 
-	for(var/datum/reagent/bits as anything in belly.reagents.reagent_list)
+	for(var/bile in belly.reagents.reagent_list)
+		var/datum/reagent/bits = bile
 		if(istype(bits, /datum/reagent/consumable))
-			var/datum/reagent/consumable/goodbit = bits
+			var/datum/reagent/consumable/goodbit = bile
 			fullness += goodbit.nutriment_factor * goodbit.volume / goodbit.metabolization_rate
 			continue
 		fullness += 0.6 * bits.volume / bits.metabolization_rate //not food takes up space
@@ -810,7 +812,8 @@ All effects don't start immediately, but rather get worse over time; the rate is
 ////////////////
 
 /mob/living/carbon/proc/handle_brain_damage()
-	for(var/datum/brain_trauma/BT as anything in get_traumas())
+	for(var/T in get_traumas())
+		var/datum/brain_trauma/BT = T
 		BT.on_life()
 
 /////////////////////////////////////

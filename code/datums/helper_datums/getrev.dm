@@ -26,7 +26,8 @@
 	if(originmastercommit)
 		msg += "origin/master: [originmastercommit]"
 
-	for(var/datum/tgs_revision_information/test_merge/tm as anything in testmerge)
+	for(var/line in testmerge)
+		var/datum/tgs_revision_information/test_merge/tm = line
 		msg += "Test merge active of PR #[tm.number] commit [tm.head_commit]"
 		SSblackbox.record_feedback("associative", "testmerged_prs", 1, list("number" = "[tm.number]", "commit" = "[tm.head_commit]", "title" = "[tm.title]", "author" = "[tm.author]"))
 
@@ -38,10 +39,11 @@
 	return msg.Join("\n")
 
 /datum/getrev/proc/GetTestMergeInfo(header = TRUE)
-	if(!length(testmerge))
+	if(!testmerge.len)
 		return ""
 	. = header ? "The following pull requests are currently test merged:<br>" : ""
-	for(var/datum/tgs_revision_information/test_merge/tm as anything in testmerge)
+	for(var/line in testmerge)
+		var/datum/tgs_revision_information/test_merge/tm = line
 		var/cm = tm.head_commit
 		var/details = ": '" + html_encode(tm.title) + "' by " + html_encode(tm.author) + " at commit " + html_encode(copytext_char(cm, 1, 11))
 		. += "<a href=\"[CONFIG_GET(string/githuburl)]/pull/[tm.number]\">#[tm.number][details]</a><br>"

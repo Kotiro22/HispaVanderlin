@@ -749,7 +749,8 @@ GLOBAL_VAR_INIT(mobids, 1)
 		if(length(GLOB.sdql2_queries))
 			if(statpanel("SDQL2"))
 				stat("Access Global SDQL2 List", GLOB.sdql2_vv_statobj)
-				for(var/datum/SDQL2_query/Q as anything in GLOB.sdql2_queries)
+				for(var/i in GLOB.sdql2_queries)
+					var/datum/SDQL2_query/Q = i
 					Q.generate_stat()
 
 	if(listed_turf && client)

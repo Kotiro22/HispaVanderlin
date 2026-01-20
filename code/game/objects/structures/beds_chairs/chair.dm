@@ -44,7 +44,8 @@
 /obj/structure/chair/proc/handle_rotation(direction)
 	handle_layer()
 	if(has_buckled_mobs())
-		for(var/mob/living/buckled_mob as anything in buckled_mobs)
+		for(var/m in buckled_mobs)
+			var/mob/living/buckled_mob = m
 			buckled_mob.setDir(direction)
 
 /obj/structure/chair/proc/handle_layer()

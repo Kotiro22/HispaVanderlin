@@ -122,11 +122,12 @@
 /mob/living/can_safely_descend(turf/target)
 	target = GET_TURF_BELOW(target)
 	var/flags = NONE
-	for(var/atom/thing as anything in target)
+	for(var/i in target.contents)
+		var/atom/thing = i
 		flags |= thing.intercept_zImpact(src, 1)
 		if(flags & FALL_STOP_INTERCEPTING)
 			break
-	for(var/obj/structure/stairs/S in target)
+	for(var/obj/structure/stairs/S in target.contents)
 		return TRUE
 	if(flags & FALL_INTERCEPTED)
 		return TRUE

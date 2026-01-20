@@ -258,7 +258,8 @@
 	do
 		CHECK_TICK
 		finished = TRUE
-		for(var/datum/SDQL2_query/query as anything in running)
+		for(var/i in running)
+			var/datum/SDQL2_query/query = i
 			if(QDELETED(query))
 				running -= query
 				continue

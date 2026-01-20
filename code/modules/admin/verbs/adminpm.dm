@@ -280,7 +280,8 @@
 				if(!tickets.len)
 					return "None"
 				. = ""
-				for(var/datum/admin_help/AH as anything in tickets)
+				for(var/I in tickets)
+					var/datum/admin_help/AH = I
 					if(.)
 						. += ", "
 					if(AH == ticket)

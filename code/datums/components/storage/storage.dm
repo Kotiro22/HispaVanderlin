@@ -132,7 +132,8 @@
 /datum/component/storage/proc/generate_hold_desc(can_hold_list)
 	var/list/desc = list()
 
-	for(var/obj/item/valid_item as anything in can_hold_list)
+	for(var/valid_type in can_hold_list)
+		var/obj/item/valid_item = valid_type
 		desc += "\a [initial(valid_item.name)]"
 
 	return "\n\t<span class='notice'>[desc.Join("\n\t")]</span>"
@@ -162,7 +163,8 @@
 		return
 	. = COMPONENT_BLOCK_REACH
 	next += master.parent
-	for(var/datum/component/storage/slave as anything in master.slaves)
+	for(var/i in master.slaves)
+		var/datum/component/storage/slave = i
 		next += slave.parent
 
 /datum/component/storage/proc/on_move()
@@ -631,7 +633,8 @@
 	var/list/ret = list()
 	ret |= contents()
 	if(recursive)
-		for(var/atom/A as anything in ret.Copy())
+		for(var/i in ret.Copy())
+			var/atom/A = i
 			SEND_SIGNAL(A, COMSIG_TRY_STORAGE_RETURN_INVENTORY, ret, TRUE)
 	return ret
 

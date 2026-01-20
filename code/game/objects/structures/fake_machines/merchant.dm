@@ -180,7 +180,8 @@
 			var/obj/item/packitem = picked_pack.contains
 			new packitem(get_turf(usr))
 		else
-			for(var/obj/item/packitem as anything in picked_pack.contains)
+			for(var/in_pack in picked_pack.contains)
+				var/obj/item/packitem = in_pack
 				new packitem(get_turf(usr))
 		qdel(picked_pack)
 	if(href_list["change"])

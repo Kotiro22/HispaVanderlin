@@ -239,7 +239,8 @@
 /obj/structure/noose/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	if(has_buckled_mobs())
-		for(var/mob/living/buckled_mob as anything in buckled_mobs)
+		for(var/m in buckled_mobs)
+			var/mob/living/buckled_mob = m
 			buckled_mob.visible_message("<span class='danger'>[buckled_mob] falls over and hits the ground!</span>")
 			to_chat(buckled_mob, "<span class='userdanger'>You fall over and hit the ground!</span>")
 			buckled_mob.adjustBruteLoss(10)
@@ -311,7 +312,8 @@
 	if(!has_buckled_mobs())
 		STOP_PROCESSING(SSobj, src)
 		return
-	for(var/mob/living/buckled_mob as anything in buckled_mobs)
+	for(var/m in buckled_mobs)
+		var/mob/living/buckled_mob = m
 		if(buckled_mob.get_bodypart("head"))
 			if(buckled_mob.stat != DEAD)
 				if(locate(/obj/structure/chair) in get_turf(src)) // So you can kick down the chair and make them hang, and stuff.

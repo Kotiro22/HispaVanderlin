@@ -18,11 +18,12 @@ GLOBAL_LIST_INIT(body_marking_sets, build_body_marking_set_references())
 /proc/build_body_marking_references()
 	// Here we build the global list for all body markings
 	. = list()
-	for(var/datum/body_marking/BM as anything in subtypesof(/datum/body_marking))
+	for(var/path in subtypesof(/datum/body_marking))
+		var/datum/body_marking/BM = path
 		if(initial(BM.name))
-			BM = new BM()
+			BM = new path()
 			.[BM.name] = BM
-			GLOB.body_markings_by_type[BM.type] = BM
+			GLOB.body_markings_by_type[path] = BM
 			//We go through all the possible affected bodyparts and a name reference where applicable
 			for(var/marking_zone in GLOB.marking_zones)
 				var/bitflag = GLOB.marking_zone_to_bitflag[marking_zone]
@@ -34,9 +35,10 @@ GLOBAL_LIST_INIT(body_marking_sets, build_body_marking_set_references())
 /proc/build_body_marking_set_references()
 	// Here we build the global list for all body markings sets
 	. = list()
-	for(var/datum/body_marking_set/BM as anything in subtypesof(/datum/body_marking_set))
+	for(var/path in subtypesof(/datum/body_marking_set))
+		var/datum/body_marking_set/BM = path
 		if(initial(BM.name))
-			BM = new BM()
+			BM = new path()
 			.[BM.name] = BM
-			GLOB.body_marking_sets_by_type[BM.type] = BM
+			GLOB.body_marking_sets_by_type[path] = BM
 

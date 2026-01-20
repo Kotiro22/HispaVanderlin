@@ -94,7 +94,8 @@ GLOBAL_LIST_EMPTY(dirty_vars)
 	var/dat = {"<b>Coordinate list of Active Turfs at Roundstart</b>
 	<br>Real-time Active Turfs list you can see in Air Subsystem at active_turfs var<br>"}
 
-	for(var/turf/T as anything in GLOB.active_turfs_startlist)
+	for(var/t in GLOB.active_turfs_startlist)
+		var/turf/T = t
 		dat += "[ADMIN_VERBOSEJMP(T)]\n"
 		dat += "<br>"
 

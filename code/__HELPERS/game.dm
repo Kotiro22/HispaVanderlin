@@ -107,7 +107,8 @@
 
 /proc/get_mob_by_key(key)
 	var/ckey = ckey(key)
-	for(var/mob/M as anything in GLOB.player_list)
+	for(var/i in GLOB.player_list)
+		var/mob/M = i
 		if(M.ckey == ckey)
 			return M
 	return null

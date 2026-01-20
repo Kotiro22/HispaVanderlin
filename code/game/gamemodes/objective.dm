@@ -96,7 +96,8 @@ GLOBAL_LIST(admin_objective_list) //Prefilled admin assignable objective list
 
 /datum/objective/proc/get_crewmember_minds()
 	. = list()
-	for(var/datum/data/record/R as anything in GLOB.data_core.locked)
+	for(var/V in GLOB.data_core.locked)
+		var/datum/data/record/R = V
 		var/datum/mind/M = R.fields["mindref"]
 		if(M)
 			. += M

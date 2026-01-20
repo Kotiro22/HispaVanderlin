@@ -103,7 +103,8 @@
 		return
 	var/turf/targetturf = get_turf(target)
 	var/last_dist = 0
-	for(var/turf/T as anything in spiral_range_turfs(4, targetturf))
+	for(var/t in spiral_range_turfs(4, targetturf))
+		var/turf/T = t
 		if(!T)
 			continue
 		var/dist = get_dist(targetturf, T)

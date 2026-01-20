@@ -972,9 +972,11 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 // Pick a random animal instead of the icon, and use that instead
 /proc/getRandomAnimalImage(atom/A)
 	if(!GLOB.friendly_animal_types.len)
-		for(var/mob/living/simple_animal/SA as anything in typesof(/mob/living/simple_animal))
+		for(var/T in typesof(/mob/living/simple_animal))
+			var/mob/living/simple_animal/SA = T
 			if(initial(SA.gold_core_spawnable) == FRIENDLY_SPAWN)
 				GLOB.friendly_animal_types += SA
+
 
 	var/mob/living/simple_animal/SA = pick(GLOB.friendly_animal_types)
 

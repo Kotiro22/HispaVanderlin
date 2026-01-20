@@ -8,9 +8,10 @@
 
 	var/list/turf_types = subtypesof(/turf)
 	var/list/filtered_types = list()
-	for(var/turf/T as anything in turf_types)
-		if(initial(T.icon) && !ispath(T, /turf/template_noop))
-			filtered_types += T
+	for(var/turf_path in turf_types)
+		var/turf/T = turf_path
+		if(initial(T.icon) && !ispath(turf_path, /turf/template_noop))
+			filtered_types += turf_path
 	sortTim(filtered_types, GLOBAL_PROC_REF(cmp_typepaths_asc))
 
 	var/list/turf_html = list()
@@ -18,9 +19,10 @@
 		turf_html = cached_buildmode_html["[BM_CATEGORY_TURF]"]
 
 	if(!length(turf_html))
-		for(var/turf/T as anything in filtered_types)
+		for(var/turf_path in filtered_types)
+			var/turf/T = turf_path
 			var/name_display = initial(T.name) || T
-			dat += "<div class='item' data-path='[T]' title='[T]' onclick='window.location=\"?src=[REF(src)];item=[T]\"'>"
+			dat += "<div class='item' data-path='[turf_path]' title='[turf_path]' onclick='window.location=\"?src=[REF(src)];item=[turf_path]\"'>"
 			dat += "<div class='item-icon'><img src='\ref[T.icon]?state=[T.icon_state]&dir=[T.dir]'/></div>"
 			dat += "<div class='item-name'>[name_display]</div>"
 			dat += "</div>"
@@ -41,7 +43,8 @@
 	var/static/list/filtered_types = list()
 
 	if(!length(filtered_types))
-		for(var/obj/O as anything in obj_types)
+		for(var/obj_path in obj_types)
+			var/obj/O = obj_path
 			if(is_abstract(O))
 				continue
 			if(ispath(O, /obj/item))
@@ -49,8 +52,8 @@
 			if(ispath(O, /obj/abstract))
 				continue
 
-			if(initial(O.icon) && !ispath(O, /obj/effect))
-				filtered_types += O
+			if(initial(O.icon) && !ispath(obj_path, /obj/effect))
+				filtered_types += obj_path
 		sortTim(filtered_types, GLOBAL_PROC_REF(cmp_typepaths_asc))
 
 	var/list/obj_html = list()
@@ -58,10 +61,11 @@
 		obj_html = cached_buildmode_html["[BM_CATEGORY_OBJ]"]
 
 	if(!length(obj_html))
-		for(var/obj/O as anything in filtered_types)
+		for(var/obj_path in filtered_types)
+			var/obj/O = obj_path
 			var/name_display = initial(O.name) || O
 
-			dat += "<div class='item' data-path='[O]' title='[O]' onclick='window.location=\"?src=[REF(src)];item=[O]\"'>"
+			dat += "<div class='item' data-path='[obj_path]' title='[obj_path]' onclick='window.location=\"?src=[REF(src)];item=[obj_path]\"'>"
 			dat += "<div class='item-icon'><img src='\ref[O.icon]?state=[O.icon_state]&dir=[O.dir]'/></div>"
 			dat += "<div class='item-name'>[name_display]</div>"
 			dat += "</div>"
@@ -82,9 +86,10 @@
 	var/static/list/filtered_types = list()
 
 	if(!length(filtered_types))
-		for(var/mob/M as anything in mob_types)
-			if(initial(M.icon) && !ispath(M, /mob/dead) && !ispath(M, /mob/camera))
-				filtered_types += M
+		for(var/mob_path in mob_types)
+			var/mob/M = mob_path
+			if(initial(M.icon) && !ispath(mob_path, /mob/dead) && !ispath(mob_path, /mob/camera))
+				filtered_types += mob_path
 		sortTim(filtered_types, GLOBAL_PROC_REF(cmp_typepaths_asc))
 
 	var/list/mob_html = list()
@@ -92,10 +97,11 @@
 		mob_html = cached_buildmode_html["[BM_CATEGORY_MOB]"]
 
 	if(!length(mob_html))
-		for(var/mob/M as anything in filtered_types)
+		for(var/mob_path in filtered_types)
+			var/mob/M = mob_path
 			var/name_display = initial(M.name) || M
 
-			dat += "<div class='item' data-path='[M]' title='[M]' onclick='window.location=\"?src=[REF(src)];item=[M]\"'>"
+			dat += "<div class='item' data-path='[mob_path]' title='[mob_path]' onclick='window.location=\"?src=[REF(src)];item=[mob_path]\"'>"
 			dat += "<div class='item-icon'><img src='\ref[M.icon]?state=[M.icon_state]&dir=[M.dir]'/></div>"
 			dat += "<div class='item-name'>[name_display]</div>"
 			dat += "</div>"
@@ -117,11 +123,12 @@
 	var/static/list/filtered_types = list()
 
 	if(!length(filtered_types))
-		for(var/obj/item/I as anything in item_types)
+		for(var/item_path in item_types)
+			var/obj/item/I = item_path
 			if(ispath(I, /obj/item/clothing) || ispath(I, /obj/item/weapon) || ispath(I, /obj/item/reagent_containers))
 				continue
 			if(initial(I.icon))
-				filtered_types += I
+				filtered_types += item_path
 		sortTim(filtered_types, GLOBAL_PROC_REF(cmp_typepaths_asc))
 
 	var/list/item_html = list()
@@ -129,9 +136,10 @@
 		item_html = cached_buildmode_html["[BM_CATEGORY_ITEM]"]
 
 	if(!length(item_html))
-		for(var/obj/item/I as anything in filtered_types)
+		for(var/item_path in filtered_types)
+			var/obj/item/I = item_path
 			var/name_display = initial(I.name) || I
-			dat += "<div class='item' data-path='[I]' title='[I]' onclick='window.location=\"?src=[REF(src)];item=[I]\"'>"
+			dat += "<div class='item' data-path='[item_path]' title='[item_path]' onclick='window.location=\"?src=[REF(src)];item=[item_path]\"'>"
 			dat += "<div class='item-icon'><img src='\ref[I.icon]?state=[I.icon_state]&dir=[I.dir]'/></div>"
 			dat += "<div class='item-name'>[name_display]</div>"
 			dat += "</div>"
@@ -153,9 +161,10 @@
 	var/static/list/filtered_types = list()
 
 	if(!length(filtered_types))
-		for(var/obj/item/I as anything in item_types)
+		for(var/item_path in item_types)
+			var/obj/item/I = item_path
 			if(initial(I.icon))
-				filtered_types += I
+				filtered_types += item_path
 		sortTim(filtered_types, GLOBAL_PROC_REF(cmp_typepaths_asc))
 
 	var/list/food_html = list()
@@ -163,9 +172,10 @@
 		food_html = cached_buildmode_html["[BM_CATEGORY_FOOD]"]
 
 	if(!length(food_html))
-		for(var/obj/item/I as anything in filtered_types)
+		for(var/item_path in filtered_types)
+			var/obj/item/I = item_path
 			var/name_display = initial(I.name) || I
-			dat += "<div class='item' data-path='[I]' title='[I]' onclick='window.location=\"?src=[REF(src)];item=[I]\"'>"
+			dat += "<div class='item' data-path='[item_path]' title='[item_path]' onclick='window.location=\"?src=[REF(src)];item=[item_path]\"'>"
 			dat += "<div class='item-icon'><img src='\ref[I.icon]?state=[I.icon_state]&dir=[I.dir]'/></div>"
 			dat += "<div class='item-name'>[name_display]</div>"
 			dat += "</div>"
@@ -187,11 +197,12 @@
 	var/static/list/filtered_types = list()
 
 	if(!length(filtered_types))
-		for(var/obj/item/I as anything in item_types)
+		for(var/item_path in item_types)
+			var/obj/item/I = item_path
 			if(ispath(I, /obj/item/reagent_containers/food))
 				continue
 			if(initial(I.icon))
-				filtered_types += I
+				filtered_types += item_path
 		sortTim(filtered_types, GLOBAL_PROC_REF(cmp_typepaths_asc))
 
 	var/list/container_html = list()
@@ -199,9 +210,10 @@
 		container_html = cached_buildmode_html["[BM_CATEGORY_REAGENT_CONTAINERS]"]
 
 	if(!length(container_html))
-		for(var/obj/item/I as anything in filtered_types)
+		for(var/item_path in filtered_types)
+			var/obj/item/I = item_path
 			var/name_display = initial(I.name) || I
-			dat += "<div class='item' data-path='[I]' title='[I]' onclick='window.location=\"?src=[REF(src)];item=[I]\"'>"
+			dat += "<div class='item' data-path='[item_path]' title='[item_path]' onclick='window.location=\"?src=[REF(src)];item=[item_path]\"'>"
 			dat += "<div class='item-icon'><img src='\ref[I.icon]?state=[I.icon_state]&dir=[I.dir]'/></div>"
 			dat += "<div class='item-name'>[name_display]</div>"
 			dat += "</div>"
@@ -222,9 +234,10 @@
 	var/static/list/filtered_types = list()
 
 	if(!length(filtered_types))
-		for(var/obj/item/I as anything in item_types)
+		for(var/item_path in item_types)
+			var/obj/item/I = item_path
 			if(initial(I.icon))
-				filtered_types += I
+				filtered_types += item_path
 		sortTim(filtered_types, GLOBAL_PROC_REF(cmp_typepaths_asc))
 
 	var/list/clothing_html = list()
@@ -232,9 +245,10 @@
 		clothing_html = cached_buildmode_html["[BM_CATEGORY_CLOTHING]"]
 
 	if(!length(clothing_html))
-		for(var/obj/item/I as anything in filtered_types)
+		for(var/item_path in filtered_types)
+			var/obj/item/I = item_path
 			var/name_display = initial(I.name) || I
-			dat += "<div class='item' data-path='[I]' title='[I]' onclick='window.location=\"?src=[REF(src)];item=[I]\"'>"
+			dat += "<div class='item' data-path='[item_path]' title='[item_path]' onclick='window.location=\"?src=[REF(src)];item=[item_path]\"'>"
 			dat += "<div class='item-icon'><img src='\ref[I.icon]?state=[I.icon_state]&dir=[I.dir]'/></div>"
 			dat += "<div class='item-name'>[name_display]</div>"
 			dat += "</div>"
@@ -255,9 +269,10 @@
 	var/static/list/filtered_types = list()
 
 	if(!length(filtered_types))
-		for(var/obj/item/I as anything in item_types)
+		for(var/item_path in item_types)
+			var/obj/item/I = item_path
 			if(initial(I.icon))
-				filtered_types += I
+				filtered_types += item_path
 		sortTim(filtered_types, GLOBAL_PROC_REF(cmp_typepaths_asc))
 
 	var/list/weapon_html = list()
@@ -265,9 +280,10 @@
 		weapon_html = cached_buildmode_html["[BM_CATEGORY_WEAPON]"]
 
 	if(!length(weapon_html))
-		for(var/obj/item/I as anything in filtered_types)
+		for(var/item_path in filtered_types)
+			var/obj/item/I = item_path
 			var/name_display = initial(I.name) || I
-			dat += "<div class='item' data-path='[I]' title='[I]' onclick='window.location=\"?src=[REF(src)];item=[I]\"'>"
+			dat += "<div class='item' data-path='[item_path]' title='[item_path]' onclick='window.location=\"?src=[REF(src)];item=[item_path]\"'>"
 			dat += "<div class='item-icon'><img src='\ref[I.icon]?state=[I.icon_state]&dir=[I.dir]'/></div>"
 			dat += "<div class='item-name'>[name_display]</div>"
 			dat += "</div>"
