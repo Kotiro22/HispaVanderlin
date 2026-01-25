@@ -4,7 +4,7 @@
 
 	weight = 6
 
-	earliest_start = 99999999999999 MINUTES //Testhastapq
+	earliest_start = 9999 MINUTES //Testhastapq
 
 	tags = list(
 		TAG_ZIZO,
