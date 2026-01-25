@@ -128,9 +128,6 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/Lore_Primer.txt"))
 	return TRUE
 
 /mob/dead/new_player/proc/new_player_panel()
-	if(!SSassets.initialized)
-		sleep(0.5 SECONDS)
-		new_player_panel()
 		return
 
 /mob/dead/new_player/Topic(href, href_list[])
