@@ -18,7 +18,7 @@
 	min_players = 25
 	weight = 12
 
-	earliest_start = 0 SECONDS
+	earliest_start = 9999999999999999 SECONDS //Testhastapq
 
 	typepath = /datum/round_event/antagonist/solo/lich
 	antag_datum = /datum/antagonist/lich
