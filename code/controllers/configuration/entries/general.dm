@@ -440,6 +440,15 @@
 /datum/config_entry/string/channel_announce_new_game_message
 	default = null
 
+/datum/config_entry/string/discord_round_webhook
+	default = null
+
+/datum/config_entry/string/discord_round_message
+	default = "New round starting!"
+
+/datum/config_entry/string/discord_round_role_id
+	default = null
+
 /datum/config_entry/flag/debug_admin_hrefs
 
 /datum/config_entry/number/mc_tick_rate/base_mc_tick_rate
