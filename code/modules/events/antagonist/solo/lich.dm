@@ -12,10 +12,10 @@
 
 	denominator = 65
 
-	base_antags = 1
-	maximum_antags = 2
+	base_antags = 0
+	maximum_antags = 0
 
-	min_players = 25
+	min_players = 75
 	weight = 12
 
 	earliest_start = 999999 SECONDS //Testhastapq

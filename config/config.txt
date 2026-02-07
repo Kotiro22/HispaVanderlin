@@ -467,7 +467,21 @@ ERROR_MSG_DELAY 50
 ## Send a message with the station name starting a new game. Also required for the notify function
 #CHAT_ANNOUNCE_NEW_GAME
 
+
 #CHANNEL_ANNOUNCE_NEW_GAME_MESSAGE A new round is beggining!!
+
+## Discord Webhook
+## If set, sends a message to this specific Discord Webhook URL when the round starts.
+#DISCORD_ROUND_WEBHOOK webhook_url
+
+## Discord Message
+## The message to send to the Discord Webhook when the round starts (Embed Description).
+#DISCORD_ROUND_MESSAGE message
+
+## Discord Role ID
+## The ID of the role to mention (ping) when the round starts. Leave blank to disable mention.
+#DISCORD_ROUND_ROLE_ID role_id
+
 
 ## Allow admin hrefs that don't use the new token system, will eventually be removed
 #DEBUG_ADMIN_HREFS
@@ -546,3 +560,4 @@ SMART_CACHE_ASSETS
 ## Useful for developers to debug potential spritesheet issues to determine where the issue is cropping up (either in DM-side sprite generation or in the TGUI-side display of said spritesheet).
 ## Will only seek to waste disk space if ran on production.
 #SAVE_SPRITESHEETS
+

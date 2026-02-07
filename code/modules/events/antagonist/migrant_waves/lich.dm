@@ -2,7 +2,7 @@
 	name = "Wandering Lich"
 	wave_type = /datum/migrant_wave/lich
 
-	weight = 6
+	weight = 0
 
 	earliest_start = 9999 MINUTES //Testhastapq
 
