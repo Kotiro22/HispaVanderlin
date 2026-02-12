@@ -2,7 +2,7 @@
 	title = "Bloodsucker"
 	tutorial = "You have recently been embraced as a vampire. You do not know whom your sire is, strange urges, unnatural strength, a thirst you can barely control. You were outed as a monster and are now on the run"
 	allowed_sexes = list(MALE, FEMALE)
-	total_positions = 10
+	total_positions = 0
 	roll_chance = 100
 
 	pack_title = "Fledgling Origins"
@@ -37,9 +37,9 @@
 	name = "The Noble"
 	pack_stats = list(
 		STATKEY_STR = 1,
-		STATKEY_INT = 3,
-		STATKEY_SPD = 2,
-		STATKEY_PER = 2
+		STATKEY_INT = 1,
+		STATKEY_SPD = 1,
+		STATKEY_PER = 1
 	)
 
 	pack_skills = list(
@@ -48,15 +48,15 @@
 		/datum/skill/misc/sneaking = 2,
 		/datum/skill/misc/athletics = 2,
 		/datum/skill/combat/unarmed = 1,
-		/datum/skill/combat/wrestling = 2,
+		/datum/skill/combat/wrestling = 1,
 		/datum/skill/labor/mathematics = 3,
 		/datum/skill/misc/swimming = 2,
-		/datum/skill/misc/climbing = 5,
-		/datum/skill/combat/knives = 3,
+		/datum/skill/misc/climbing = 2,
+		/datum/skill/combat/knives = 1,
 		/datum/skill/craft/crafting = 2,
-		/datum/skill/craft/carpentry = 3,
-		/datum/skill/combat/swords = 3,
-		/datum/skill/combat/bows = 3
+		/datum/skill/craft/carpentry = 1,
+		/datum/skill/combat/swords = 1,
+		/datum/skill/combat/bows = 1
 	)
 
 	pack_traits = list(
@@ -131,23 +131,23 @@
 /datum/job_pack/bloodsucker_count
 	name = "The Count"
 	pack_stats = list(
-		STATKEY_CON = 2,
-		STATKEY_END = 2,
-		STATKEY_STR = 2
+		STATKEY_CON = 1,
+		STATKEY_END = 1,
+		STATKEY_STR = 1
 	)
 
 	pack_skills = list(
 		/datum/skill/misc/swimming = 2,
-		/datum/skill/misc/climbing = 5,
+		/datum/skill/misc/climbing = 2,
 		/datum/skill/misc/riding = 3,
 		/datum/skill/misc/reading = 4,
 		/datum/skill/misc/music = 1,
 		/datum/skill/craft/cooking = 2,
-		/datum/skill/combat/bows = 1,
+		/datum/skill/combat/bows = 2,
 		/datum/skill/combat/crossbows = 2,
-		/datum/skill/combat/wrestling = 3,
+		/datum/skill/combat/wrestling = 2,
 		/datum/skill/combat/unarmed = 2,
-		/datum/skill/combat/swords = 3,
+		/datum/skill/combat/swords = 2,
 		/datum/skill/combat/knives = 2,
 		/datum/skill/labor/mathematics = 3,
 		/datum/skill/craft/crafting = 2,
