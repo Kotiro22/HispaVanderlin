@@ -3,30 +3,30 @@
 		"ten_commandments": {
 			"name": "Los Diez Mandamientos",
 			"laws": [
-				"Vosotros no han de tener ningun otro Dios antes que los Diez.",
+				"Vosotros no habéis tener ningún otro Dios antes que los Diez.",
 				"No te haras dios pagano, ni ninguna semejanza de lo que este arriba en los cielos, ni abajo en la tierra, ni en las aguas debajo de la tierra.",
-				"No tomaras el nombre de tus dioses en vano, porque los dioses no daran por inocente al que tome su nombre en vano.",
-				"Acordaos del dia de reposo para el sabatico para mantenerlo santo. Seis dias han de hacer labor, y hacer todo su trabajo: Pero el septimo dia, es el sabatico de los Dioses: No harás en ella obra alguna, tú, ni tu hijo, ni tu hija, ni tu siervo, ni tu sierva, ni tu bestia, ni extranjero que este dentro de nustras puertas.",
+				"No tomaréis el nombre de sus dioses en vano, pues los dioses no daran por inocente al que tome su nombre en vano.",
+				"Acordaos del dia de reposo en sabático para mantenerlo santo. Seis dias han de hacer labor, y hacer todo su trabajo: Pero el septimo dia, es el sabatico de los Dioses: No harás en ella obra alguna, tú, ni tu hijo, ni tu hija, ni tu siervo, ni tu sierva, ni tu bestia, ni extranjero que este dentro de nustras puertas.",
 				"Honrad a su padre y a su madre: para que sus dias se alarguen en la tierra que tus Dioses te dan.",
-				"Vosotros no han de matar.",
-				"Vosotros no han de cometer adulterio.",
-				"Vosotros no han de robar.",
-				"Vosotros no han de ser falsos testigos en contra de vuestro vecino.",
-				"No codiciaras la casa de tu projimo, no codiciaras la mujer de tu projimo, ni su siervo, ni su criada, ni su buey, ni su asno, ni nada que sea de tu projimo."
+				"Vosotros no habéis de matar.",
+				"Vosotros no habéis de cometer adulterio.",
+				"Vosotros no habéis de robar.",
+				"Vosotros no habéis de ser falsos testigos en contra de vuestro vecino.",
+				"No codiciarás la vivienda de tu prójimo, no codiciarás la mujer de tu prójimo, ni su siervo, ni su criada, ni su buey, ni su asno, ni nada que sea de tu prójimo."
 			],
 			"weight": 3
 		},
 		"code of hammurabi": {
 			"name": "Codigo de Hamurabi",
 			"laws": [
-				"Si un hombre le quita el ojo a otro hombre, su ojo ha de ser sacado.",
+				"Si un hombre le quita el ojo a otro hombre, su ojo ha de ser arrancado.",
 				"Si alguien es atrapado robando, entonces ha de ser condenado a muerte.",
 				"Si un hombre ha desposado a su hijo con una esposa, y su hijo la ha conocido, y despues el (el padre) se acuesta en su seno, y lo agarran, este hombre sera condenado a muerte, y la mujer quedara libre.",
-				"Si un constructor edifica una casa para un hombre y no la hace firme, y la casa que el ha edificado se derrumba y causa la muerte del propetario de la casa, ese constructor sera condenado a muerte.",
+				"Si un constructor edifica una vivienda para un hombre y no la hace firme, y la casa que el ha edificado se derrumba y causa la muerte del propetario de la casa, ese constructor sera condenado a muerte.",
 				"Si alguien se apropia de un campo para cultivarlo como arrendatario, debera pagar el alquiler del campo a su propietario.",
 				"Si alguien puso su propiedad en custodia con otro, y alli en el lugar de custodia la propiedad se perdio, el propetario de la casa debera restituir al propetario la cosa perdida.",
-				"Si alguien toma fuera de las puertas de la ciudad a un esclavo o a una esclava de la corte, o a un esclavo o una esclava de un liberto, sera condenado a muerte.",
-				"Si un hijo hiere a su padre, sus manos seran cortadas.",
+				"Si alguien toma a un esclavo o esclava de la corte, o a un esclavo o esclava de un liberto, sera condenado a muerte.",
+				"Si un hijo hiere a su padre, sus manos han de ser cortadas.",
 				"Si alguien es demasiado perezoso para mantener su presa y no la fortalece, y se produce una ruptura en su presa y el agua inunda la plantacion, el hombre en cuya presa se produjo la ruptura debera reemplazar el grano que ha causado que se arruine.",
 				"Si alguien roba un buey, una oveja, un asno, un cerdo o una cabra, si pertenece a un dios o a la corte, el ladron pagara el treinta por uno; si pertenece a un Dios o a la corte, pagara la decupla; y si no tiene con que pagar, sera condenado a muerte."
 			],
@@ -44,8 +44,8 @@
 		"human_supremacy": {
 			"name": "Supremacia Humen",
 			"laws": [
-				"Vosotros no hais de ser inhumen. Todo inhumen es un inferior.",
-				"Vosotros no se asociaran con ningun ser inferior, humens que asi lo hagan abandonan su humanidad.",
+				"Vosotros no habéis de ser inhumen. Todo inhumen es un inferior.",
+				"Vosotros no habéis de asociaros con ningun ser inferior, humens que asi lo hagan abandonan su humanidad.",
 				"Aquellos inferiores han de ser separados de los humen."
 			],
 			"weight": 1
