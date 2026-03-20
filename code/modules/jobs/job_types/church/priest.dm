@@ -115,7 +115,7 @@
 /datum/job/priest/demoted
 	title = "Ex-Priest"
 	f_title = "Ex-Priestess"
-	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_EQUIP_RANK)
+	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_EQUIP_RANK | JOB_SHOW_IN_CREDITS)
 	department_flag = CHURCHMEN
 	faction = FACTION_TOWN
 	total_positions = 0
@@ -124,7 +124,7 @@
 /datum/job/priest/vice
 	title = "Vice Priest"
 	f_title = "Vice Priestess"
-	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_EQUIP_RANK)
+	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_EQUIP_RANK | JOB_SHOW_IN_CREDITS)
 	department_flag = CHURCHMEN
 	faction = FACTION_TOWN
 	total_positions = 0

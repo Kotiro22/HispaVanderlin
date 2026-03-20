@@ -23,7 +23,7 @@
 	You're going to be a solemn reminder of what happens when something unwanted is born into this world."
 	department_flag = PEASANTS
 	display_order = JDO_VAGRANT
-	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
+	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE | JOB_SHOW_IN_CREDITS)
 	faction = FACTION_TOWN
 	total_positions = 15
 	spawn_positions = 15

@@ -16,7 +16,7 @@
 	Ever since, you have lived in the Orphanage under the Matron's care. \
 	Will you make something of yourself, or will you die in the streets as a nobody?"
 	department_flag = YOUNGFOLK
-	job_flags = (JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
+	job_flags = (JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE | JOB_SHOW_IN_CREDITS)
 	display_order = JDO_ORPHAN
 	faction = FACTION_TOWN
 	total_positions = 12
