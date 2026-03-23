@@ -1,0 +1,23 @@
+{
+    "map_name": "NewDaftmarsh",
+    "map_path": "map_files/newdaftmarsh",
+    "map_file": "newdaftmarsh.dmm",
+	"immigrant_origin": "Vanderlin",
+	"monarch_title": "Count",
+	"monarch_title_f": "Countess",
+	"traits": [
+		{"Up": true, "Turf Weather Effects": true},
+		{"Up": true, "Down": true, "Turf Weather Effects": true},
+		{"Up": true, "Down": true, "Turf Weather Effects": true, "Leylines": true},
+		{"Up": true, "Down": true, "Turf Weather Effects": true},
+		{"Down": true, "Turf Weather Effects": true}
+	],
+	"other_z": [
+		"map_files/vanderlin/vanderlin_forest",
+		"map_files/vanderlin/vanderlin_mountain",
+		"map_files/vanderlin/vanderlin_bog"
+	],
+	"minetype": null,
+	"space_empty_levels": 0,
+	"space_ruin_levels": 0
+}
